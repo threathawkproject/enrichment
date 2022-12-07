@@ -5,7 +5,7 @@ class EmailAnalyzer(WebAnalyzer):
     ioc = ""
     key = ""
 
-    def run(self, ioc):
+    def run(self, ioc, type):
         self.ioc = ioc
         self.key =  "wvhc9xxi9ts7u1j6z494udv334grknewrythtcssvc5rjaqb"
         emailrep = EmailRep(self.key)

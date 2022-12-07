@@ -5,7 +5,7 @@ import json
 
 class AbuseIPDB(WebAnalyzer):
 
-    def run(self, ioc):
+    def run(self, ioc, type):
         # Defining the api-endpoint
         url = 'https://api.abuseipdb.com/api/v2/check'
         querystring = {

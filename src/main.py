@@ -31,7 +31,7 @@ async def analyze(form: AnalyzersForm):
         analyzerInfo = data[analyzer]
         MyClass = getattr(importlib.import_module(analyzerInfo["path"]), analyzerInfo["className"])
         instance = MyClass()
-        result = instance.run(form.ioc)
+        result = instance.run(form.ioc, form.type)
         report[analyzer] = result
     
     return report

@@ -6,6 +6,10 @@ class WebAnalyzer(ABC):
             return self._ioc
 
         @property
+        def type(self):
+            return self._type
+
+        @property
         def key(self):
             return self._key
 
