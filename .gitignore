@@ -8,3 +8,6 @@ test.http
 __pycache__/
 *.py[cod]
 *$py.class
+
+/src/test.py
+/test_file.txt

@@ -35,4 +35,8 @@ async def analyze(form: AnalyzersForm):
         result = instance.run(form.ioc, form.type)
         report[analyzer] = result
 
-    return report
+
+
+@app.post("/test")
+def test_docker_analyzer():
+    pass
