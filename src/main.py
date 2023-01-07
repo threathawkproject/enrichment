@@ -33,7 +33,9 @@ async def analyze(form: AnalyzersForm):
             analyzerInfo["path"]), analyzerInfo["className"])
         instance = MyClass()
         result = instance.run(form.ioc, form.type)
+        print(result)
         report[analyzer] = result
+    return report
 
 
 

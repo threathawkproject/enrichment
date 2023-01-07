@@ -1,5 +1,4 @@
 from src.analyzers.classes import WebAnalyzer
-from abuseIPDB import AbuseIPDB
 import requests
 
 
