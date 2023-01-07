@@ -2,12 +2,12 @@
     "emailRep": {
         "type": "email",
         "path": "analyzers.webAnalyzers.emailRep",
-        "className": "EmailAnalyzer"
+        "className": "EmailRep"
     },
-    "robotex": {
+    "robtex": {
         "type": "observable",
-        "path": "analyzers.webAnalyzers.robotex",
-        "className": "Robotex"
+        "path": "analyzers.webAnalyzers.robtex",
+        "className": "Robtex"
     },
     "geoIP2": {
         "type": "ip",

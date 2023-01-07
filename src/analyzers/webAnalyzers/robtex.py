@@ -1,7 +1,8 @@
 import requests
 from src.analyzers.classes import WebAnalyzer
 
-class Robotex(WebAnalyzer):
+
+class Robtex(WebAnalyzer):
 
     def run(self, ioc):
         print(ioc)
