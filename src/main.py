@@ -17,10 +17,10 @@ app.add_middleware(
 )
 
 
-
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
 
 @app.post("/analyze")
 async def analyze(form: AnalyzersForm):
@@ -29,10 +29,10 @@ async def analyze(form: AnalyzersForm):
         data = json.load(f)
     for analyzer in form.selected_analyzers:
         analyzerInfo = data[analyzer]
-        MyClass = getattr(importlib.import_module(analyzerInfo["path"]), analyzerInfo["className"])
+        MyClass = getattr(importlib.import_module(
+            analyzerInfo["path"]), analyzerInfo["className"])
         instance = MyClass()
         result = instance.run(form.ioc, form.type)
         report[analyzer] = result
-    
-    return report
 
+    return report
