@@ -33,5 +33,11 @@
         "type": "ip",
         "path": "analyzers.webAnalyzers.threatMiner",
         "className": "ThreatMiner"
+    },
+    "virusTotal": {
+        "type": "observable",
+        "path": "analyzers.webAnalyzers.virusTotal",
+        "className": "VirusTotal",
+        "key": "45191dd08477e7c7ce89a32e4b7e8f46a6848fde192e9480ce67fa9872c9f2b2"
     }
 }

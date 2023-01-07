@@ -1,8 +1,8 @@
 from analyzers.classes import WebAnalyzer
 import requests
 
-class ThreatMiner(WebAnalyzer):
 
+class ThreatMiner(WebAnalyzer):
 
     def run(self, ioc, type):
         self._ioc = ioc
@@ -13,7 +13,6 @@ class ThreatMiner(WebAnalyzer):
         if self._type == "domain":
             base_url = "https://api.threatminer.org/v2/domain.php"
 
-
         try:
             url = f"{base_url}?q={ioc}&rt=2"
             response = requests.request(method='GET', url=url)
@@ -21,5 +20,4 @@ class ThreatMiner(WebAnalyzer):
             return response.json()
         except Exception as e:
             print(e)
-            return None 
-
+            return None
