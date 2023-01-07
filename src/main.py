@@ -36,3 +36,7 @@ async def analyze(form: AnalyzersForm):
     
     return report
 
+
+@app.post("/test")
+def test_docker_analyzer():
+    pass

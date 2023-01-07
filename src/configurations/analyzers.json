@@ -33,6 +33,10 @@
         "type": "ip",
         "path": "analyzers.webAnalyzers.threatMiner",
         "className": "ThreatMiner"
+    },
+    "stringsifter": {
+        "type": "file",
+        "path": "analyzers.dockerAnalyzers.stringsifter",
+        "className": "StringSifter"
     }
-
 }

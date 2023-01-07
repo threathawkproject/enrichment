@@ -3,3 +3,5 @@
 /Scripts
 pyvenv.cfg
 test.http
+/src/test.py
+/test_file.txt
