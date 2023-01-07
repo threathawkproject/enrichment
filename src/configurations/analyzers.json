@@ -2,7 +2,7 @@
     "emailRep": {
         "type": "email",
         "path": "analyzers.webAnalyzers.emailRep",
-        "className": "EmailRep"
+        "className": "EmailRepClass"
     },
     "robtex": {
         "type": "observable",
