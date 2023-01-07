@@ -1,5 +1,5 @@
 import geoip2.webservice
-from src.analyzers.classes import WebAnalyzer
+from analyzers.classes import WebAnalyzer
 
 
 class GeoIP2(WebAnalyzer):

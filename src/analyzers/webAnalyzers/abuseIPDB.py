@@ -1,4 +1,4 @@
-from src.analyzers.classes import WebAnalyzer
+from analyzers.classes import WebAnalyzer
 import requests
 
 

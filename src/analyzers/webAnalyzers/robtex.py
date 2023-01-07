@@ -1,5 +1,5 @@
 import requests
-from src.analyzers.classes import WebAnalyzer
+from analyzers.classes import WebAnalyzer
 
 
 class Robtex(WebAnalyzer):

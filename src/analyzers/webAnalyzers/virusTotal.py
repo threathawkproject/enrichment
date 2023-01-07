@@ -1,4 +1,4 @@
-from src.analyzers.classes import WebAnalyzer
+from analyzers.classes import WebAnalyzer
 import json
 import base64
 import requests
@@ -12,7 +12,7 @@ class VirusTotal(WebAnalyzer):
         self._type = type
 
         # Load the API key
-        with open("src/configurations/analyzers.json") as jsonFile:
+        with open("./src/configurations/analyzers.json") as jsonFile:
             configurations = json.load(jsonFile)
             jsonFile.close()
         self._key = configurations["virusTotal"]["key"]
