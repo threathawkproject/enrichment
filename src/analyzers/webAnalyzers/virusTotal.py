@@ -12,7 +12,7 @@ class VirusTotal(WebAnalyzer):
         self._type = type
 
         # Load the API key
-        with open("./src/configurations/analyzers.json") as jsonFile:
+        with open("../src/configurations/analyzers.json") as jsonFile:
             configurations = json.load(jsonFile)
             jsonFile.close()
         self._key = configurations["virusTotal"]["key"]
