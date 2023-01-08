@@ -2,6 +2,7 @@ from analyzers.classes import WebAnalyzer
 import json
 import base64
 import requests
+import hashlib
 
 
 class VirusTotal(WebAnalyzer):
@@ -20,6 +21,10 @@ class VirusTotal(WebAnalyzer):
         # Determine which endpoint to use
         if type == "file":
             pass
+
+        elif type == "hash":
+            # Set the endpoint URL
+            url = "https://www.virustotal.com/api/v3/files/" + ioc
 
         elif type == "url":
             # Generate a valid URL identifier for the URL
