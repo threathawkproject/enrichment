@@ -44,5 +44,19 @@
         "type": "file",
         "path": "analyzers.dockerAnalyzers.stringsifter",
         "className": "StringSifter"
+    },
+    "alienVault": {
+        "type": [
+            "file",
+            "sha1",
+            "sha256",
+            "md5",
+            "url",
+            "domain",
+            "ip"
+        ],
+        "path": "analyzers.webAnalyzers.alienVault",
+        "className": "AlienVault",
+        "key": "6f74af5aa3a8bd3fb26bf35d672addf4ef05bc0580a94ab0ff2648b7406de6b0"
     }
 }
