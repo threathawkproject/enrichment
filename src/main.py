@@ -2,7 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from models.analyzersForm import AnalyzersForm
 import json
+import nanoid
 import importlib
+import utils
+import meilisearch
+
+client = meilisearch.Client('http://localhost:7700')
+client.create_index('reports', {'primaryKey': 'id'})
 
 app = FastAPI()
 
@@ -35,6 +41,9 @@ async def analyze(form: AnalyzersForm):
         result = instance.run(form.ioc, form.type)
         print(result)
         report[analyzer] = result
+    report["id"] = nanoid.generate('0123456789abcdefghij', 4)
+    report["ioc"] = form.ioc
+    utils.add_report(client, report)
     return report
 
 
