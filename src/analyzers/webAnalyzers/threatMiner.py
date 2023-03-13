@@ -10,6 +10,7 @@ class ThreatMiner(WebAnalyzer):
 
         if self._type == "ip":
             base_url = "https://api.threatminer.org/v2/host.php"
+
         if self._type == "domain":
             base_url = "https://api.threatminer.org/v2/domain.php"
 
@@ -18,6 +19,7 @@ class ThreatMiner(WebAnalyzer):
             response = requests.request(method='GET', url=url)
             response.raise_for_status()
             return response.json()
+
         except Exception as e:
             print(e)
             return None

@@ -2,7 +2,6 @@ from analyzers.classes import WebAnalyzer
 import json
 import base64
 import requests
-import hashlib
 
 
 class VirusTotal(WebAnalyzer):

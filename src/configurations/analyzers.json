@@ -1,62 +1,74 @@
 {
-    "emailRep": {
-        "type": "email",
-        "path": "analyzers.webAnalyzers.emailRep",
-        "className": "EmailRepClass"
-    },
-    "robtex": {
-        "type": "observable",
-        "path": "analyzers.webAnalyzers.robtex",
-        "className": "Robtex"
-    },
-    "geoIP2": {
-        "type": "ip",
-        "path": "analyzers.webAnalyzers.geoIP2",
-        "className": "GeoIP2",
-        "accountID": 771503,
-        "key": "fKh4TiE6RFjEKDo9"
-    },
-    "abuseIPDB": {
-        "type": "ip",
-        "path": "analyzers.webAnalyzers.abuseIPDB",
-        "className": "AbuseIPDB",
-        "key": "02241dd0b2496a7dcc6ae14ec1791d8c4cb29cdc1ee5207ad82ab96cc4721a17b931a6420003a2a0"
-    },
-    "honeyDB": {
-        "type": "ip",
-        "path": "analyzers.webAnalyzers.honeyDB",
-        "className": "HoneyDB",
-        "id": "2a7247b71a923763bb17dbf0185320742a972f64e5757ef9c0d5fe9918e4ec7c",
-        "key": "d72b1b4ff45ab4ba4284f62d6190963fbb88f2578974f02a5e7b6dbf0c24ee6d"
-    },
-    "threatMiner": {
-        "type": "ip",
-        "path": "analyzers.webAnalyzers.threatMiner",
-        "className": "ThreatMiner"
-    },
-    "virusTotal": {
-        "type": "observable",
-        "path": "analyzers.webAnalyzers.virusTotal",
-        "className": "VirusTotal",
-        "key": "45191dd08477e7c7ce89a32e4b7e8f46a6848fde192e9480ce67fa9872c9f2b2"
-    },
-    "stringsifter": {
-        "type": "file",
-        "path": "analyzers.dockerAnalyzers.stringsifter",
-        "className": "StringSifter"
-    },
-    "alienVault": {
-        "type": [
-            "file",
-            "sha1",
-            "sha256",
-            "md5",
-            "url",
-            "domain",
-            "ip"
-        ],
-        "path": "analyzers.webAnalyzers.alienVault",
-        "className": "AlienVault",
-        "key": "6f74af5aa3a8bd3fb26bf35d672addf4ef05bc0580a94ab0ff2648b7406de6b0"
-    }
+  "emailRep": {
+    "type": ["email"],
+    "path": "analyzers.webAnalyzers.emailRep",
+    "className": "EmailRep"
+  },
+
+  "robtex": {
+    "type": ["domain", "ip"],
+    "path": "analyzers.webAnalyzers.robtex",
+    "className": "Robtex"
+  },
+
+  "geoIP2": {
+    "type": ["ip"],
+    "path": "analyzers.webAnalyzers.geoIP2",
+    "className": "GeoIP2",
+    "accountID": 771503,
+    "key": "fKh4TiE6RFjEKDo9"
+  },
+
+  "abuseIPDB": {
+    "type": ["ip"],
+    "path": "analyzers.webAnalyzers.abuseIPDB",
+    "className": "AbuseIPDB",
+    "key": "02241dd0b2496a7dcc6ae14ec1791d8c4cb29cdc1ee5207ad82ab96cc4721a17b931a6420003a2a0"
+  },
+
+  "honeyDB": {
+    "type": ["ip"],
+    "path": "analyzers.webAnalyzers.honeyDB",
+    "className": "HoneyDB",
+    "id": "2a7247b71a923763bb17dbf0185320742a972f64e5757ef9c0d5fe9918e4ec7c",
+    "key": "d72b1b4ff45ab4ba4284f62d6190963fbb88f2578974f02a5e7b6dbf0c24ee6d"
+  },
+
+  "threatMiner": {
+    "type": ["ip"],
+    "path": "analyzers.webAnalyzers.threatMiner",
+    "className": "ThreatMiner"
+  },
+
+  "virusTotal": {
+    "type": [
+      "domain",
+      "file",
+      { "hash": ["md5", "sha1", "sha256"] },
+      "ip",
+      "url"
+    ],
+    "path": "analyzers.webAnalyzers.virusTotal",
+    "className": "VirusTotal",
+    "key": "45191dd08477e7c7ce89a32e4b7e8f46a6848fde192e9480ce67fa9872c9f2b2"
+  },
+
+  "stringSifter": {
+    "type": "file",
+    "path": "analyzers.dockerAnalyzers.stringSifter",
+    "className": "StringSifter"
+  },
+
+  "alienVault": {
+    "type": [
+      "domain",
+      "file",
+      { "hash": ["md5", "sha1", "sha256"] },
+      "ip",
+      "url"
+    ],
+    "path": "analyzers.webAnalyzers.alienVault",
+    "className": "AlienVault",
+    "key": "6f74af5aa3a8bd3fb26bf35d672addf4ef05bc0580a94ab0ff2648b7406de6b0"
+  }
 }
