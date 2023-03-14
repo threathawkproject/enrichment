@@ -70,5 +70,17 @@
     "path": "analyzers.webAnalyzers.alienVault",
     "className": "AlienVault",
     "key": "6f74af5aa3a8bd3fb26bf35d672addf4ef05bc0580a94ab0ff2648b7406de6b0"
+  },
+
+  "circlDNS": {
+    "type": ["domain", "ip"],
+    "path": "analyzers.webAnalyzers.circlDNS",
+    "className": "CirclDNS"
+  },
+
+  "torCheck": {
+    "type": ["ip"],
+    "path": "analyzers.webAnalyzers.torCheck",
+    "className": "TorCheck"
   }
 }
