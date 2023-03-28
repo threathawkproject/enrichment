@@ -2,7 +2,7 @@ from analyzers.classes import WebAnalyzer
 from emailrep import EmailRep
 
 
-class EmailRep(WebAnalyzer):
+class EmailRepClass(WebAnalyzer):
     ioc = ""
     key = ""
 

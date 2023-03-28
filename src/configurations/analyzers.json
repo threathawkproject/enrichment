@@ -2,7 +2,7 @@
   "emailRep": {
     "type": ["email"],
     "path": "analyzers.webAnalyzers.emailRep",
-    "className": "EmailRep"
+    "className": "EmailRepClass"
   },
 
   "robtex": {
@@ -75,7 +75,9 @@
   "circlDNS": {
     "type": ["domain", "ip"],
     "path": "analyzers.webAnalyzers.circlDNS",
-    "className": "CirclDNS"
+    "className": "CirclDNS",
+    "username": "zohaibadnan137@gmail.com",
+    "password": "PdPxMTvpj685kLZInWhKYKEFD6tHGQYyNhtfg8HbX3w="
   },
 
   "torCheck": {

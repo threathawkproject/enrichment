@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from models.analyzersForm import AnalyzersForm
 import json
@@ -47,7 +47,11 @@ async def analyze(form: AnalyzersForm):
     return report
 
 
-
 @app.post("/test")
 def test_docker_analyzer():
     pass
+
+
+@app.post("/uploadFile")
+async def uploadFile(file: UploadFile = File(...)):
+    return file
