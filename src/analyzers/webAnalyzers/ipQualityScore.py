@@ -18,7 +18,7 @@ class IPQualityScore(WebAnalyzer):
 
             # Set the endpoint URL
             # We're using the URL that returns JSON data
-            url = "https://ipqualityscore.com/api/json/ip/Q5cjxDJwhC3lJQwZn8tKJRxzPtSfKGEH/{ioc}/"
+            url = f"https://ipqualityscore.com/api/json/ip/{self.key}/{ioc}/"
 
             # Create the headers
             # These are specified in the API documentation
