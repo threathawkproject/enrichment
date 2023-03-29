@@ -19,7 +19,7 @@ class VirusTotal(WebAnalyzer):
 
         # Determine which endpoint to use
         if type == "file":
-            pass
+            return "File received"
 
         elif type == "hash":
             # Set the endpoint URL

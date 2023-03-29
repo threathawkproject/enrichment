@@ -1,13 +1,20 @@
+import json
+from typing import Optional
+from fastapi import UploadFile
 from pydantic import BaseModel
 
 
 class AnalyzersForm(BaseModel):
-    ioc: str
+    ioc: Optional[str]
     type: str
     selected_analyzers: list[str]
 
+    @classmethod
+    def __get_validators__(cls):
+        yield cls.validate_to_json
 
-class FileSchema(BaseModel):
-    file_name: str
-    content_type: str
-    contents: bytes
+    @classmethod
+    def validate_to_json(cls, value):
+        if isinstance(value, str):
+            return cls(**json.loads(value))
+        return value

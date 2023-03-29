@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from models.analyzersForm import AnalyzersForm
 import json
@@ -7,9 +7,12 @@ import importlib
 import utils
 import meilisearch
 
+
+# Initialize the Meiisearch client
 client = meilisearch.Client('http://localhost:7700')
 client.create_index('reports', {'primaryKey': 'id'})
 
+# Initialize FastAPI
 app = FastAPI()
 
 origins = ["*"]
@@ -25,33 +28,47 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "ThreatHawk"}
 
 
 @app.post("/analyze")
-async def analyze(form: AnalyzersForm):
+async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
+    # Initialize the report
     report = {}
+
+    # Load the configuration file
     with open('./configurations/analyzers.json', 'r') as f:
-        data = json.load(f)
+        configuration = json.load(f)
+
+    # Instantiate the selected analyzers
     for analyzer in form.selected_analyzers:
-        analyzerInfo = data[analyzer]
-        MyClass = getattr(importlib.import_module(
-            analyzerInfo["path"]), analyzerInfo["className"])
-        instance = MyClass()
-        result = instance.run(form.ioc, form.type)
-        print(result)
+        analyzerConfig = configuration[analyzer]
+        analyzerClass = getattr(importlib.import_module(
+            analyzerConfig["path"]), analyzerConfig["className"])
+        instance = analyzerClass()
+
+        if file is not None:
+            result = instance.run(file, form.type)
+        else:
+            result = instance.run(form.ioc, form.type)
+
+        # Add the data returned by the analyzer to the report
         report[analyzer] = result
+
+    # Finalize the report
     report["id"] = nanoid.generate('0123456789abcdefghij', 4)
-    report["ioc"] = form.ioc
+    if file is not None:
+        report["ioc"] = file.filename
+
+    else:
+        report["ioc"] = form.ioc
+
+    # Add the report to Meiisearch
     utils.add_report(client, report)
+
     return report
 
 
 @app.post("/test")
 def test_docker_analyzer():
     pass
-
-
-@app.post("/uploadFile")
-async def uploadFile(file: UploadFile = File(...)):
-    return file
