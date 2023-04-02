@@ -31,6 +31,16 @@ async def root():
     return {"message": "ThreatHawk"}
 
 
+@app.get("/analzyers")
+async def analyzers():
+    # Load the configuration file
+    with open("../src/configurations/analyzers.json") as jsonFile:
+        configurations = json.load(jsonFile)
+        jsonFile.close()
+
+    return configurations
+
+
 @app.post("/analyze")
 async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
     # Initialize the report
