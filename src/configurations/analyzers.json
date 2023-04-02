@@ -1,17 +1,20 @@
 {
   "emailRep": {
+    "name": "EmailRep",
     "type": ["email"],
     "path": "analyzers.webAnalyzers.emailRep",
     "className": "EmailRepClass"
   },
 
   "robtex": {
+    "name": "Robtex",
     "type": ["domain", "ip"],
     "path": "analyzers.webAnalyzers.robtex",
     "className": "Robtex"
   },
 
   "geoIP2": {
+    "name": "GeoIP2",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.geoIP2",
     "className": "GeoIP2",
@@ -20,6 +23,7 @@
   },
 
   "abuseIPDB": {
+    "name": "AbuseIPDB",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.abuseIPDB",
     "className": "AbuseIPDB",
@@ -27,6 +31,7 @@
   },
 
   "honeyDB": {
+    "name": "HoneyDB",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.honeyDB",
     "className": "HoneyDB",
@@ -35,44 +40,37 @@
   },
 
   "threatMiner": {
+    "name": "ThreatMiner",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.threatMiner",
     "className": "ThreatMiner"
   },
 
   "virusTotal": {
-    "type": [
-      "domain",
-      "file",
-      { "hash": ["md5", "sha1", "sha256"] },
-      "ip",
-      "url"
-    ],
+    "name": "VirusTotal",
+    "type": ["domain", "file", "md5", "sha1", "sha256", "ip", "url"],
     "path": "analyzers.webAnalyzers.virusTotal",
     "className": "VirusTotal",
     "key": "45191dd08477e7c7ce89a32e4b7e8f46a6848fde192e9480ce67fa9872c9f2b2"
   },
 
   "stringSifter": {
+    "name": "StringSifter",
     "type": "file",
     "path": "analyzers.dockerAnalyzers.stringSifter",
     "className": "StringSifter"
   },
 
   "alienVault": {
-    "type": [
-      "domain",
-      "file",
-      { "hash": ["md5", "sha1", "sha256"] },
-      "ip",
-      "url"
-    ],
+    "name": "AlienVault",
+    "type": ["domain", "file", "md5", "sha1", "sha256", "ip", "url"],
     "path": "analyzers.webAnalyzers.alienVault",
     "className": "AlienVault",
     "key": "6f74af5aa3a8bd3fb26bf35d672addf4ef05bc0580a94ab0ff2648b7406de6b0"
   },
 
   "circlDNS": {
+    "name": "CIRCL Passive DNS",
     "type": ["domain", "ip"],
     "path": "analyzers.webAnalyzers.circlDNS",
     "className": "CirclDNS",
@@ -81,12 +79,14 @@
   },
 
   "torCheck": {
+    "name": "TorCheck",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.torCheck",
     "className": "TorCheck"
   },
 
   "ipQualityScore": {
+    "name": "IPQualityScore",
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.ipQualityScore",
     "className": "IPQualityScore",
