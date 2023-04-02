@@ -89,7 +89,7 @@
   "ipQualityScore": {
     "type": ["ip"],
     "path": "analyzers.webAnalyzers.ipQualityScore",
-    "className": "IPQualityCheck",
+    "className": "IPQualityScore",
     "key": "Q5cjxDJwhC3lJQwZn8tKJRxzPtSfKGEH"
   }
 }
