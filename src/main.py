@@ -40,6 +40,7 @@ async def analyzers():
 
     return configurations
 
+
 @app.get("/iocTypes")
 async def iocTypes():
     # Load the ioc types file
@@ -48,6 +49,7 @@ async def iocTypes():
         jsonFile.close()
 
     return configurations
+
 
 @app.post("/analyze")
 async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
@@ -66,7 +68,8 @@ async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
         instance = analyzerClass()
 
         if file is not None:
-            result = instance.run(file, form.type)
+            contents = await file.read()
+            result = instance.run(contents, form.type)
         else:
             result = instance.run(form.ioc, form.type)
 
