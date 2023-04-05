@@ -91,5 +91,12 @@
     "path": "analyzers.webAnalyzers.ipQualityScore",
     "className": "IPQualityScore",
     "key": "Q5cjxDJwhC3lJQwZn8tKJRxzPtSfKGEH"
+  },
+
+  "yaraify": {
+    "name": "YARAify",
+    "type": ["file", "hash"],
+    "path": "analyzers.webAnalyzers.yaraify",
+    "className": "YARAify"
   }
 }
