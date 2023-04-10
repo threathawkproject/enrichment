@@ -98,5 +98,12 @@
     "type": ["file", "hash"],
     "path": "analyzers.webAnalyzers.yaraify",
     "className": "YARAify"
+  },
+
+  "phishTank": {
+    "name": "PhishTank",
+    "type": ["url"],
+    "path": "analyzers.webAnalyzers.phishTank",
+    "className": "PhishTank"
   }
 }
