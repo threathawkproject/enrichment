@@ -25,6 +25,11 @@ class CirclDNS(WebAnalyzer):
             # Make the query
             try:
                 data = client.query(ioc)
+
+                # Force-serialze the data
+                data = json.dumps(data, default=str)
+
+                print(data)
                 return data
 
             except Exception as e:

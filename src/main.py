@@ -31,6 +31,26 @@ async def root():
     return {"message": "ThreatHawk"}
 
 
+@app.get("/analyzers")
+async def analyzers():
+    # Load the configuration file
+    with open("../src/configurations/analyzers.json") as jsonFile:
+        configurations = json.load(jsonFile)
+        jsonFile.close()
+
+    return configurations
+
+
+@app.get("/iocTypes")
+async def iocTypes():
+    # Load the ioc types file
+    with open("../src/configurations/iocTypes.json") as jsonFile:
+        configurations = json.load(jsonFile)
+        jsonFile.close()
+
+    return configurations
+
+
 @app.post("/analyze")
 async def analyze(form: AnalyzersForm):
     # Initialize the report
