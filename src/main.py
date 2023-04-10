@@ -52,7 +52,7 @@ async def iocTypes():
 
 
 @app.post("/analyze")
-async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
+async def analyze(form: AnalyzersForm):
     # Initialize the report
     report = {}
 
@@ -67,22 +67,24 @@ async def analyze(form: AnalyzersForm, file: UploadFile | None = None):
             analyzerConfig["path"]), analyzerConfig["className"])
         instance = analyzerClass()
 
-        if file is not None:
-            contents = await file.read()
-            result = instance.run(contents, form.type)
-        else:
-            result = instance.run(form.ioc, form.type)
+
+        result = instance.run(form.ioc, form.type, form.root_id)
+
+        # if file is not None:
+        #     result = instance.run(file, form.type)
+        # else:
+        #     result = instance.run(form.ioc, form.type)
 
         # Add the data returned by the analyzer to the report
         report[analyzer] = result
 
     # Finalize the report
     report["id"] = nanoid.generate('0123456789abcdefghij', 4)
-    if file is not None:
-        report["ioc"] = file.filename
+    # if file is not None:
+    #     report["ioc"] = file.filename
 
-    else:
-        report["ioc"] = form.ioc
+    # else:
+    report["ioc"] = form.ioc
 
     # Add the report to Meiisearch
     utils.add_report(client, report)
