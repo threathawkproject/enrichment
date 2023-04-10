@@ -1,5 +1,27 @@
 import json
+import consts
+import requests
 
+def encode(type, data):
+    try:
+        URL = ""
+        if type == "sdo":
+            URL = consts.ENCODING_SDO_URL
+        elif type == "sro":
+            URL = consts.ENCODING_SRO_URL
+        else:
+            raise Exception("provide the type of encoding!")
+        resp = requests.post(
+            url=URL,
+            json=data
+        )
+        resp.raise_for_status()
+        stix_obj = resp.json()
+        return stix_obj
+    except Exception as e:
+        print(f"An exception occurred while encoding \n error: {str(e)}")
+        return None
+    
 
 def add_report(client, report):
     ioc_report_str = json.dumps(report)
