@@ -3,7 +3,7 @@ from OTXv2 import OTXv2
 from OTXv2 import IndicatorTypes
 import json
 
-from src.utils import encode
+from utils import encode
 
 class AlienVault(WebAnalyzer):
 
