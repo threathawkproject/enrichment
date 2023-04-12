@@ -27,12 +27,12 @@ class CirclDNS(WebAnalyzer):
                 data = client.query(ioc)
 
                 # Force-serialze the data
-                data = json.dumps(data, default=str)
+                data = json.dumps(data, default=str, indent=4)
 
                 return data
 
             except Exception as e:
-                print(f"Error: {e}")
+                print(e)
                 return None
 
         else:

@@ -33,39 +33,36 @@ class YARAify(WebAnalyzer):
                 "file": ioc}
 
             # Send the request
-            try:
-                response = requests.request(
-                    method="POST", url=url, headers=headers, files=files)
-                response.raise_for_status()
+            # try:
+            #     response = requests.request(
+            #         method="POST", url=url, headers=headers, files=files)
+            #     response.raise_for_status()
 
-                # Extract the task ID from the response
-                task_id = response.json()["data"]["task_id"]
+            #     # Extract the task ID from the response
+            #     task_id = response.json()["data"]["task_id"]
 
-            except Exception as e:
-                print(e)
-                return None
+            # except Exception as e:
+            #     print(e)
+            #     return None
 
             # Now, use the task ID to fetch the results of the scan
+            task_id = "8f2303f8-d36d-11ed-866d-42010aa4000b"
             data = {"query": "get_results",
                     "task_id": f"{task_id}"}
             data = json.dumps(data)
 
-            while (1):
-                # Send the request
-                try:
-                    response = requests.request(
-                        method="POST", url=url, headers=headers, files=files)
-                    response.raise_for_status()
-                    query_status = response.json()["query_status"]
+            # time.sleep(60)
 
-                    if query_status == "ok":
-                        return response.json()
+            # Send the request
+            try:
+                response = requests.request(
+                    method="POST", url=url, headers=headers, files=files)
+                response.raise_for_status()
+                return response.json()
 
-                except Exception as e:
-                    print(e)
-                    return None
-
-                time.sleep(10)
+            except Exception as e:
+                print(e)
+                return None
 
         elif type == "hash":
             # Set the endpoint URL
