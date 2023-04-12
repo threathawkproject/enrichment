@@ -5,7 +5,7 @@ import pypdns
 
 class CirclDNS(WebAnalyzer):
 
-    def run(self, ioc, type):
+    def run(self, ioc, type, node_id):
         # Housekeeping
         self._ioc = ioc
         self._type = type
@@ -29,7 +29,6 @@ class CirclDNS(WebAnalyzer):
                 # Force-serialze the data
                 data = json.dumps(data, default=str)
 
-                print(data)
                 return data
 
             except Exception as e:

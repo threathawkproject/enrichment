@@ -68,7 +68,7 @@ async def analyze(form: AnalyzersForm):
         instance = analyzerClass()
 
 
-        result = instance.run(form.ioc, form.type, form.root_id)
+        result = instance.run(form.ioc, form.type, form.node_id)
 
         # if file is not None:
         #     result = instance.run(file, form.type)
