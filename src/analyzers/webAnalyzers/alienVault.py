@@ -24,54 +24,67 @@ class AlienVault(WebAnalyzer):
         pulse_info = data["pulse_info"]
         pulses = pulse_info["pulses"]
         encoded_data = []
+        countries = []
+        sighted_by = []
+        ttps = []
         if len(pulses) > 0:
             for pulse in pulses:
                 # getting the location
                 for country in pulse["targeted_countries"]:
-                    data = {
-                        "name": country,
-                        "country": country,
-                        "latitude": 0,
-                        "longitude": 0,
-                    }
-                    data_to_send = {
-                        "type": "location",
-                        "data": data
-                    }
-                    result = encode("sdo", data_to_send)
-                    if result is not None:
-                        encoded_data.append(result)
-                        sro = self.make_relationship(result, node_id)
-                        if sro is not None:
-                            encoded_data.append(sro)
+                    if country not in countries:
+                        countries.append(country)
+        
                         
 
                 # storing the ttps!
                 for attack_id in pulse["attack_ids"]:
-                    name = attack_id["name"] 
-                    tid = attack_id["id"]
-                    description = attack_id["display_name"]
-                    external_references=[
-                        {
-                            "source_name": "ATT&CK",
-                            "external_id": tid
-                        }
-                    ]
-                    data = {
-                        "name":name,
-                        "description": description,
-                        "external_references": external_references
-                    }
-                    data_to_send = {
-                        "type": "attack-pattern",
-                        "data": data
-                    }
-                    result = encode("sdo", data_to_send)
-                    if result is not None:
-                        encoded_data.append(result)
-                        sro = self.make_relationship(result, node_id)
-                        if sro is not None:
-                            encoded_data.append(sro)
+                    ttps.append(attack_id)
+                    
+        for country in countries:
+            data = {
+                "name": country,
+                "country": country,
+                "latitude": 0,
+                "longitude": 0,
+            }
+            data_to_send = {
+                "type": "location",
+                "data": data
+            }
+            result = encode("sdo", data_to_send)
+            if result is not None:
+                encoded_data.append(result)
+                sro = self.make_relationship(result, node_id)
+                if sro is not None:
+                    encoded_data.append(sro)
+        
+        for attack_id in ttps:
+            name = attack_id["name"] 
+            tid = attack_id["id"]
+            description = attack_id["display_name"]
+            external_references=[
+                {
+                    "source_name": "ATT&CK",
+                    "external_id": tid
+                }
+            ]
+            data = {
+                "name":name,
+                "description": description,
+                "external_references": external_references
+            }
+            data_to_send = {
+                "type": "attack-pattern",
+                "data": data
+            }
+            result = encode("sdo", data_to_send)
+            if result is not None:
+                encoded_data.append(result)
+                sro = self.make_relationship(result, node_id)
+                if sro is not None:
+                    encoded_data.append(sro)
+
+
         return encoded_data
 
 

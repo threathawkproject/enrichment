@@ -9,6 +9,8 @@ def encode(type, data):
             URL = consts.ENCODING_SDO_URL
         elif type == "sro":
             URL = consts.ENCODING_SRO_URL
+        elif type == "sco":
+            URL = consts.ENCODING_SCO_URL
         else:
             raise Exception("provide the type of encoding!")
         resp = requests.post(
