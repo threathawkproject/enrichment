@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from models.analyzersForm import AnalyzersForm
 import json
@@ -6,7 +6,7 @@ import nanoid
 import importlib
 import utils
 import meilisearch
-
+import consts
 
 # Initialize the Meiisearch client
 client = meilisearch.Client('http://localhost:7700')
@@ -30,6 +30,17 @@ app.add_middleware(
 async def root():
     return {"message": "ThreatHawk"}
 
+
+@app.get("/get_analyzers")
+async def get_analyzers(type: str | None = None):
+    if type is not None and type in consts.types:
+        try:
+            analyzers = utils.get_analyzers(type)
+            return analyzers
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Erro: {str(e)}")    
+    else:
+        raise HTTPException(status_code=400, detail="please enter a valid analyzer type!")
 
 @app.get("/analyzers")
 async def analyzers():
@@ -90,6 +101,7 @@ async def analyze(form: AnalyzersForm):
     utils.add_report(client, report)
 
     return report
+
 
 
 @app.post("/test")

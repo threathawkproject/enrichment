@@ -105,5 +105,20 @@
     "type": ["url"],
     "path": "analyzers.webAnalyzers.phishTank",
     "className": "PhishTank"
+  },
+
+  "groupsViaAttackPattern": {
+    "name": "Get groups via attack pattern",
+    "type": ["attack-pattern"],
+    "path": "analyzers.contextualize.groupsViaAttackPattern",
+    "className": "GroupsViaAttackPattern"
+  },
+
+  "campaignsViaAttackPattern": {
+    "name": "Get campaigns via attack pattern",
+    "type": ["attack-pattern"],
+    "path": "analyzers.contextualize.campaignsViaAttackPattern",
+    "className": "CampaignsViaAttackPattern"
   }
+
 }

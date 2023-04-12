@@ -2,6 +2,19 @@ import json
 import consts
 import requests
 
+
+def get_analyzers(type: str):
+    analyzers = []
+    with open("../src/configurations/analyzers.json") as jsonFile:
+        analyzers_configuration = json.load(jsonFile)
+        for analyzer_name, configuration in analyzers_configuration.items():
+            if type in configuration["type"]:
+                analyzers.append(analyzer_name)
+        jsonFile.close()
+    return analyzers
+
+
+
 def encode(type, data):
     try:
         URL = ""
