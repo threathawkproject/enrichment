@@ -1,6 +1,6 @@
 from analyzers.classes import WebAnalyzer
 import requests
-from src.utils import encode
+from utils import encode
 import json
 class AbuseIPDB(WebAnalyzer):
 
@@ -39,7 +39,7 @@ class AbuseIPDB(WebAnalyzer):
                     encoded_data.append(json.loads(sro))
         return encoded_data
 
-    def run(self, ioc, type, node_id):
+    def run(self, ioc, type, node_id = None):
         self._ioc = ioc
         self._type = type
 
@@ -58,9 +58,12 @@ class AbuseIPDB(WebAnalyzer):
                 method='GET', url=url, headers=headers, params=querystring)
             response.raise_for_status()
             data = response.json()
-            abuse_ip_db_data = data["data"]
-            encoded_data = self.convert(abuse_ip_db_data, node_id)
-            return encoded_data
+            if node_id is not None:
+                abuse_ip_db_data = data["data"]
+                encoded_data = self.convert(abuse_ip_db_data, node_id)
+                return encoded_data
+            else:
+                return data
         except Exception as e:
             print(e)
             return None

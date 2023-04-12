@@ -4,7 +4,7 @@ from analyzers.classes import WebAnalyzer
 
 class Robtex(WebAnalyzer):
 
-    def run(self, ioc):
+    def run(self, ioc, type, node_id = None):
         print(ioc)
         self._ioc = ioc
         baseUrl = "https://freeapi.robtex.com/ipquery"

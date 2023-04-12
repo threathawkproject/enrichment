@@ -4,7 +4,7 @@ from analyzers.classes import WebAnalyzer
 
 class GeoIP2(WebAnalyzer):
 
-    def run(self, ioc, type):
+    def run(self, ioc, type, node_id = None):
         self._ioc = ioc
         with geoip2.webservice.Client(771503, 'fKh4TiE6RFjEKDo9', host='geolite.info') as client:
             # You can also use `client.city` or `client.insights`

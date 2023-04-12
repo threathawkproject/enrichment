@@ -6,7 +6,7 @@ import requests
 
 class VirusTotal(WebAnalyzer):
 
-    def run(self, ioc, type, node_id):
+    def run(self, ioc, type, node_id = None):
         # Housekeeping
         self._ioc = ioc
         self._type = type

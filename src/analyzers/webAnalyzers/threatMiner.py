@@ -4,7 +4,7 @@ import requests
 
 class ThreatMiner(WebAnalyzer):
 
-    def run(self, ioc, type, node_id):
+    def run(self, ioc, type, node_id = None):
         self._ioc = ioc
         self._type = type
 

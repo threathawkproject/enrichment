@@ -3,7 +3,7 @@ from analyzers.classes import WebAnalyzer
 
 
 class PhishTank(WebAnalyzer):
-    def run(self, ioc, type):
+    def run(self, ioc, type, node_id = None):
         # Housekeeping
         self._ioc = ioc
         self._type = type

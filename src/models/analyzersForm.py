@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class AnalyzersForm(BaseModel):
-    node_id: str
+    node_id: str | None = None
     ioc: str
     type: str
     selected_analyzers: list[str]

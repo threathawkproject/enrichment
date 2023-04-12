@@ -131,8 +131,8 @@ class AlienVault(WebAnalyzer):
 
         response = otx.get_indicator_details_by_section(
             indicator_type=indicatorType, indicator=ioc, section="general")
-        data = self.convert(response, node_id)
-        # data_to_send = {
-        #     "data": data
-        # }
-        return data
+        if node_id is not None:
+            data = self.convert(response, node_id)
+            return data
+        else:
+            return response
