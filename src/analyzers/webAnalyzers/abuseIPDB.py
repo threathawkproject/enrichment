@@ -25,7 +25,7 @@ class AbuseIPDB(WebAnalyzer):
             host_names.extend(data["hostnames"])
         for host_name in host_names:
             domain_name = {
-                "value": host_name
+                "name": host_name
             }
             data_to_send = {
                 "type": "domain-name",
@@ -33,10 +33,10 @@ class AbuseIPDB(WebAnalyzer):
             }
             result = encode("sco", data_to_send)
             if result is not None:
-                encoded_data.append(json.loads(result))
+                encoded_data.append(result)
                 sro = self.make_relationship(result, node_id)
                 if sro is not None:
-                    encoded_data.append(json.loads(sro))
+                    encoded_data.append(sro)
         return encoded_data
 
     def run(self, ioc, type, node_id = None):

@@ -1,9 +1,7 @@
 from analyzers.classes import WebAnalyzer
-import analyzers.contextualize.contextualize
 from OTXv2 import OTXv2
 from OTXv2 import IndicatorTypes
 import json
-
 
 from utils import encode
 
@@ -17,6 +15,7 @@ class AlienVault(WebAnalyzer):
             "target": target_id,
             "rel_type": "indicates"
         }
+        print(relationship_data)
         relationship = encode("sro", relationship_data)
         return relationship
     
@@ -35,10 +34,11 @@ class AlienVault(WebAnalyzer):
                     if country not in countries:
                         countries.append(country)
         
+                        
+
                 # storing the ttps!
                 for attack_id in pulse["attack_ids"]:
-                    if attack_id["id"] not in ttps:
-                        ttps.append(attack_id["id"])
+                    ttps.append(attack_id)
                     
         for country in countries:
             data = {
@@ -59,10 +59,28 @@ class AlienVault(WebAnalyzer):
                     encoded_data.append(sro)
         
         for attack_id in ttps:
-            attack_pattern = analyzers.contextualize.contextualize.get_mitre_data(attack_id, "attack-pattern")
-            if attack_pattern is not None:
-                encoded_data.append(attack_pattern)
-                sro = self.make_relationship(attack_pattern, node_id)
+            name = attack_id["name"] 
+            tid = attack_id["id"]
+            description = attack_id["display_name"]
+            external_references=[
+                {
+                    "source_name": "ATT&CK",
+                    "external_id": tid
+                }
+            ]
+            data = {
+                "name":name,
+                "description": description,
+                "external_references": external_references
+            }
+            data_to_send = {
+                "type": "attack-pattern",
+                "data": data
+            }
+            result = encode("sdo", data_to_send)
+            if result is not None:
+                encoded_data.append(result)
+                sro = self.make_relationship(result, node_id)
                 if sro is not None:
                     encoded_data.append(sro)
 
