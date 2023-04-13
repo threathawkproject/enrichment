@@ -32,17 +32,17 @@ async def root():
     return {"message": "ThreatHawk"}
 
 
-@app.get("/get_analyzers")
+@app.get("/get_investigation_analyzers")
 async def get_analyzers(get_analyzer: GetAnalyzers | None = None):
-    
     type = get_analyzer.type if get_analyzer is not None else None
-
-    if (type is not None) and (len(type) > 0) and (type in consts.types):
+    found = utils.check_type(type)
+    print(found)
+    if (type is not None) and (len(type) > 0) and found:
         try:
             analyzers = utils.get_analyzers(type)
             return analyzers
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Erro: {str(e)}")    
+            raise HTTPException(status_code=500, detail=f"Error: {str(e)}")    
     else:
         raise HTTPException(status_code=400, detail="please enter a valid analyzer type!")
 

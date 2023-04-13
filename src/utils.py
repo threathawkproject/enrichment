@@ -3,6 +3,12 @@ import consts
 import requests
 
 
+def check_type(type: str):
+    for investigation_type in consts.investigation_types:
+        if type == investigation_type["value"]:
+            return True
+    return False 
+
 def get_analyzers(type: str):
     analyzers = []
     with open("../src/configurations/analyzers.json") as jsonFile:
