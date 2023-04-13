@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from models.analyzersForm import AnalyzersForm
+from models.getAnalyzers import GetAnalyzers
 import json
 import nanoid
 import importlib
@@ -32,8 +33,11 @@ async def root():
 
 
 @app.get("/get_analyzers")
-async def get_analyzers(type: str | None = None):
-    if type is not None and type in consts.types:
+async def get_analyzers(get_analyzer: GetAnalyzers | None = None):
+    
+    type = get_analyzer.type if get_analyzer is not None else None
+
+    if (type is not None) and (len(type) > 0) and (type in consts.types):
         try:
             analyzers = utils.get_analyzers(type)
             return analyzers
