@@ -7,9 +7,13 @@ import importlib
 import utils
 import meilisearch
 import consts
+import os
 
 # Initialize the Meiisearch client
-client = meilisearch.Client('http://localhost:7700')
+MEILI_URL = os.getenv("MEILI_URL", default="http://localhost:7700")
+
+
+client = meilisearch.Client(MEILI_URL)
 client.create_index('reports', {'primaryKey': 'id'})
 
 # Initialize FastAPI

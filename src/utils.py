@@ -1,7 +1,7 @@
 import json
 import consts
 import requests
-
+import os
 
 def check_type(type: str):
     for investigation_type in consts.investigation_types:
@@ -22,14 +22,15 @@ def get_analyzers(type: str):
 
 
 def encode(type, data):
+    ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8081")
     try:
         URL = ""
         if type == "sdo":
-            URL = consts.ENCODING_SDO_URL
+            URL = f"{ENCODING_URL}/generate_sdo"
         elif type == "sro":
-            URL = consts.ENCODING_SRO_URL
+            URL = f"{ENCODING_URL}/generate_sro"
         elif type == "sco":
-            URL = consts.ENCODING_SCO_URL
+            URL = f"{ENCODING_URL}/generate_sco"
         else:
             raise Exception("provide the type of encoding!")
         resp = requests.post(

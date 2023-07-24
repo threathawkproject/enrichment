@@ -8,8 +8,3 @@ def get_mitre_data(attack_id, type):
     if ttp is not None:
         return ttp.serialize()
     return None
-
-
-# class Contextualize():
-#     def run(self, ioc, type, node_id):
-        # mitre_attack_data = MitreAttackData("enterprise-attack.json")
