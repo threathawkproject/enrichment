@@ -32,7 +32,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "ThreatHawk"}
+    return {"message": "ThreatHawk Enrichment is Running!"}
 
 
 @app.get("/get_investigation_analyzers")
