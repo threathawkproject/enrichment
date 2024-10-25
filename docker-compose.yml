@@ -17,7 +17,7 @@ services:
     container_name: threat-hawk-enrichment
     environment:
       - MEILI_URL=http://threat-hawk-meilisearch:7700
-      - ENCODING_URL=http://threat-hawk-encoding:8000
+      - ENCODING_URL=http://threat-hawk-encoding:8001
     restart: always
     ports:
       - "8000:8000"
