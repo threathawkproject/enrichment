@@ -22,7 +22,7 @@ def get_analyzers(type: str):
 
 
 def encode(type, data):
-    ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8081")
+    ENCODING_URL = os.getenv('ENCODING_URL', default="http://localhost:8001")
     try:
         URL = ""
         if type == "sdo":
